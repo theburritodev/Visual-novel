@@ -1,0 +1,84 @@
+* {
+    box-sizing: border-box;
+    color: #fff;
+    font-family: Arial;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("https://th.bing.com/th/id/R.8c7017003d3665591758dcf670ce1f90?rik=0goVfHUxmWeenw&pid=ImgRaw&r=0");
+    background-size: cover;
+    overflow: hidden;
+    height: 100svh;
+}
+
+body #scene {
+    background-color: #0005;
+    display: flex;
+    height: 100%;
+    justify-content: space-around;
+    padding: 3%;
+}
+
+body #scene img {
+    filter: drop-shadow(0px 0px 10px #0005);
+}
+
+body #gameplay {
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    background-color: #0007;
+    box-shadow: 0px 0px 10px #000;
+    backdrop-filter: blur(5px);
+}
+
+body #gameplay #message {
+    display: none;
+}
+
+body #gameplay #message div {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+body #gameplay #message div img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: 0% -20%;
+    background-color: #fff5;
+    border-radius: 10px;
+}
+
+body #gameplay #choice {
+    display: none;
+}
+
+body #gameplay #choice div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+body #gameplay #choice div button {
+    background-color: #0004;
+    padding: 10px;
+    border: 0;
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+    border: 1px solid transparent;
+
+    transition: .2s;
+}
+
+body #gameplay #choice div button:hover {
+    background-color: #fff4;
+    border: 1px solid #fff;
+}
