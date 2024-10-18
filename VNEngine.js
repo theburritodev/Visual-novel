@@ -1,4 +1,11 @@
 const Scenes = [];
+var actualScene = undefined;
+
+addEventListener("keypress", (e)=>{
+    if(e.key == " " && actualScene != undefined) {
+        actualScene.step();
+    }
+});
 
 class Scene {
     constructor(characters, history)
@@ -14,11 +21,18 @@ class Scene {
             sprite : "https://static.jojowiki.com/images/thumb/8/83/latest/20200510231755/DIO_Anime_Render.png/185px-DIO_Anime_Render.png"
         }];
 
-        this.history = history || [{
-            type : 0,
-            character : 0,
-            message : "Filho da puta!!!"
-        }];
+        this.history = history || [
+            {
+                type : 0,
+                character : 0,
+                message : "Filho da puta!!!"
+            },
+            {
+                type : 0,
+                character : 1,
+                message : "Oh Jotaro, não me maltrate assim!!!"
+            },
+        ];
     }
 
     run() {
@@ -26,10 +40,14 @@ class Scene {
         document.getElementById("character-2").src = this.characters[1].sprite;
         this.tick = 0;
         this.step();
+        actualScene = this;
     }
 
     step() {
         let data = this.history[this.tick];
+
+        document.getElementById("pfp").src = this.characters[data.character].sprite;
+
         if(data.type == 0) {
             document.getElementById("message").style.display = "block";
             document.getElementById("choice").style.display = "none";
@@ -46,6 +64,9 @@ class Scene {
             document.getElementById("character-1").style.opacity = 0.5;
             document.getElementById("character-2").style.opacity = 1;
         }
+
+        this.tick++;
+        if(this.tick == this.history.length) actualScene = undefined;
     }
 }
 
